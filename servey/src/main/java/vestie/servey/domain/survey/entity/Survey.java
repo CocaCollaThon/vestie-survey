@@ -12,9 +12,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,6 +19,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import vestie.servey.domain.base.BaseEntity;
 import vestie.servey.domain.survey.entity.value.Constraint;
 import vestie.servey.domain.survey.entity.value.ExpectedTime;
 import vestie.servey.domain.surveyfield.SurveyField;
@@ -30,12 +28,7 @@ import vestie.servey.domain.surveyfield.SurveyField;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "survey")
-public class Survey {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "survey_id")
-	private Long id; // PK
+public class Survey extends BaseEntity {
 
 	@Column(name = "member_id", nullable = false)
 	private Long memberId; // 등록자 회원 Id(PK)

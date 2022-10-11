@@ -3,30 +3,24 @@ package vestie.servey.domain.surveyfield.choice;
 /**
  * Created by ShinD on 2022/10/11.
  */
+
 import static javax.persistence.FetchType.*;
-import static javax.persistence.GenerationType.*;
 import static lombok.AccessLevel.*;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import vestie.servey.domain.base.BaseEntity;
 
 @Getter
 @NoArgsConstructor(access = PROTECTED)
 @Entity
 @Table(name = "choice_option")
-public class ChoiceOption {
-
-	@Id @GeneratedValue(strategy = IDENTITY)
-	@Column(name = "choice_option_id")
-	private Long id;
+public class ChoiceOption extends BaseEntity {
 
 	private String name; // 옵션 이름
 
