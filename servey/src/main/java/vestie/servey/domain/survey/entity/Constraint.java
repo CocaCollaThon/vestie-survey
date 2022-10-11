@@ -6,12 +6,18 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Enumerated;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import vestie.servey.domain.survey.entity.enums.GenderConstraint;
 
 /**
  * Created by ShinD on 2022/10/11.
  */
 @Embeddable
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Constraint {
 
 	@Enumerated(STRING)
