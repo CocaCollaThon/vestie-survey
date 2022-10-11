@@ -52,4 +52,26 @@ public class Survey {
 
 	@Embedded
 	private Constraint constraint; // 성별, 나이 제약조건
+
+	/* TODO 나중에 deleteInBatch 쓰려면 orphanRemoval 안 쓸거 같아서, 그때 보고 수정 */
+	@OneToMany(mappedBy = "survey", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<SurveyField> surveyFields = new ArrayList<>(); // 필드 질문 항목 들
+
+	@Builder
+	public Survey(Long memberId, String title, LocalDate startDate, LocalDate endDate, ExpectedTime expectedTime,
+		Constraint constraint) {
+		this.memberId = memberId;
+		this.title = title;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.expectedTime = expectedTime;
+		this.constraint = constraint;
+	}
+
+	public void addAllSurveyField(List<SurveyField> surveyFields) {
+		surveyFields.forEach(sf -> {
+			sf.confirmSurvey(this);
+			this.surveyFields.add(sf);
+		});
+	}
 }
