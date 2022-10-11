@@ -5,18 +5,24 @@ package vestie.servey.domain.survey.entity;
  */
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import vestie.servey.domain.surveyfield.entity.SurveyField;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -41,8 +47,8 @@ public class Survey {
 	@Column(name = "end_date", nullable = false)
 	private LocalDate endDate; // 설문 종료일
 
-	@Column(name = "expected_time", nullable = false)
-	private int expectedTime; // 예상 소요시간
+	@Embedded
+	private ExpectedTime expectedTime; // 예상 소요시간(분)
 
 	@Embedded
 	private Constraint constraint; // 성별, 나이 제약조건
