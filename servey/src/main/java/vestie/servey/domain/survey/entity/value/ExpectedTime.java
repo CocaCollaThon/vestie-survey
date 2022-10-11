@@ -1,4 +1,4 @@
-package vestie.servey.domain.survey.entity;
+package vestie.servey.domain.survey.entity.value;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import vestie.servey.domain.survey.entity.Survey;
-import vestie.servey.domain.surveyfield.entity.SurveyField;
+import vestie.servey.domain.surveyfield.SurveyField;
 import vestie.servey.fixture.SurveyFieldFixture;
 
 /**

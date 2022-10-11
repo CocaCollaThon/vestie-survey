@@ -1,4 +1,4 @@
-package vestie.servey.domain.survey.entity;
+package vestie.servey.domain.survey.entity.value;
 
 import static javax.persistence.EnumType.*;
 

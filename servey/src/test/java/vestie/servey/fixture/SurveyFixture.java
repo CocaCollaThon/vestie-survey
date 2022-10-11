@@ -5,8 +5,8 @@ import static vestie.servey.domain.survey.entity.enums.GenderConstraint.*;
 
 import java.time.LocalDate;
 
-import vestie.servey.domain.survey.entity.Constraint;
-import vestie.servey.domain.survey.entity.ExpectedTime;
+import vestie.servey.domain.survey.entity.value.Constraint;
+import vestie.servey.domain.survey.entity.value.ExpectedTime;
 import vestie.servey.domain.survey.entity.Survey;
 import vestie.servey.domain.survey.entity.enums.GenderConstraint;
 

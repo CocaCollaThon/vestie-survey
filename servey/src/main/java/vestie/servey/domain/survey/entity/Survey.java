@@ -22,7 +22,9 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import vestie.servey.domain.surveyfield.entity.SurveyField;
+import vestie.servey.domain.survey.entity.value.Constraint;
+import vestie.servey.domain.survey.entity.value.ExpectedTime;
+import vestie.servey.domain.surveyfield.SurveyField;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -32,7 +34,7 @@ public class Survey {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "servey_id")
+	@Column(name = "survey_id")
 	private Long id; // PK
 
 	@Column(name = "member_id", nullable = false)
@@ -69,9 +71,9 @@ public class Survey {
 	}
 
 	public void addAllSurveyField(List<SurveyField> surveyFields) {
-		surveyFields.forEach(sf -> {
-			sf.confirmSurvey(this);
-			this.surveyFields.add(sf);
-		});
+		for (SurveyField surveyField : surveyFields) {
+			surveyField.confirmSurvey(this);
+			this.surveyFields.add(surveyField);
+		}
 	}
 }
