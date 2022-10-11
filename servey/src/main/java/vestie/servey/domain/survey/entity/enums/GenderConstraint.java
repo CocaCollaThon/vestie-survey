@@ -1,4 +1,4 @@
-package vestie.servey.domain.servey.entity.enums;
+package vestie.servey.domain.survey.entity.enums;
 
 /**
  * Created by ShinD on 2022/10/11.

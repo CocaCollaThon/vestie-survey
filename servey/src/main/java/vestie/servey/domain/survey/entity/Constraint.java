@@ -1,4 +1,4 @@
-package vestie.servey.domain.servey.entity;
+package vestie.servey.domain.survey.entity;
 
 import static javax.persistence.EnumType.*;
 
@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Enumerated;
 
-import vestie.servey.domain.servey.entity.enums.GenderConstraint;
+import vestie.servey.domain.survey.entity.enums.GenderConstraint;
 
 /**
  * Created by ShinD on 2022/10/11.

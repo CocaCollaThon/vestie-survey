@@ -1,4 +1,4 @@
-package vestie.servey.domain.servey.entity;
+package vestie.servey.domain.survey.entity;
 
 /**
  * Created by ShinD on 2022/10/11.
