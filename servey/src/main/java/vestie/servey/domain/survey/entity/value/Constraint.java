@@ -24,9 +24,11 @@ public class Constraint {
 	@Column(name = "gender_constraint")
 	private GenderConstraint genderConstraint; // 성별 제약조건 [ONLY_MAN, ONLY_WOMAN, NO_CONSTRAINT]
 
+	@Builder.Default
 	@Column(name = "min_age_constraint")
 	private int minAgeConstraint = 0; // 최소 나이 제약조건
 
+	@Builder.Default
 	@Column(name = "max_age_constraint")
 	private int maxAgeConstraint = 500; // 최대 나이 제약조건
 }
