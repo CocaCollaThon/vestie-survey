@@ -1,4 +1,4 @@
-package vestie.servey.domain.surveyfield.subjective;
+package vestie.servey.domain.surveyquestion.subjective;
 
 import static javax.persistence.EnumType.*;
 import static lombok.AccessLevel.*;
@@ -10,8 +10,8 @@ import javax.persistence.Enumerated;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import vestie.servey.domain.surveyfield.SurveyField;
-import vestie.servey.domain.surveyfield.subjective.enums.SubjectiveType;
+import vestie.servey.domain.surveyquestion.SurveyQuestion;
+import vestie.servey.domain.surveyquestion.subjective.enums.SubjectiveType;
 
 /**
  * 주관식 질문
@@ -21,7 +21,7 @@ import vestie.servey.domain.surveyfield.subjective.enums.SubjectiveType;
 @Entity
 @NoArgsConstructor(access = PROTECTED)
 @DiscriminatorValue("subjective_question")
-public class SubjectiveQuestion extends SurveyField  {
+public class SubjectiveQuestion extends SurveyQuestion {
 
 	@Enumerated(STRING)
 	private SubjectiveType subjectiveType; // 주관식 질문 유형, [SHORT_ANSWER, ESSAY]

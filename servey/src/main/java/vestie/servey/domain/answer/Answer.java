@@ -1,8 +1,9 @@
-package vestie.servey.domain.writtenserveyfield;
+package vestie.servey.domain.answer;
 
 import static javax.persistence.InheritanceType.*;
 import static lombok.AccessLevel.*;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,7 +15,6 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import vestie.servey.domain.base.BaseEntity;
-import vestie.servey.domain.surveyfield.SurveyField;
 import vestie.servey.domain.writtensurvey.entity.WrittenSurvey;
 
 /**
@@ -24,15 +24,29 @@ import vestie.servey.domain.writtensurvey.entity.WrittenSurvey;
 @Entity
 @NoArgsConstructor(access = PROTECTED)
 @Inheritance(strategy = JOINED)
-@DiscriminatorColumn(name = "question_type") // 기본값이 DTYPE
-@Table(name = "written_survey_field")
-public abstract class WrittenSurveyField extends BaseEntity {
+@DiscriminatorColumn(name = "question_type")
+@Table(name = "answer")
+public abstract class Answer extends BaseEntity {
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "survey_field_id")
-	private SurveyField surveyField; // 대상 질문 양식
+	@Column(nullable = false)
+	protected Long surveyQuestionId; // 대상 질문 양식 Id
+
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "written_survey_id")
-	private WrittenSurvey writtenSurvey; // 작성된 설문지
+	protected WrittenSurvey writtenSurvey; // 작성된 설문지
+
+
+
+
+	//== 생성자 ==//
+	public Answer(Long surveyQuestionId) {
+		this.surveyQuestionId = surveyQuestionId;
+	}
+
+
+	//== 연관관계 편의 메서드 ==//
+	public void confirmWrittenSurvey(WrittenSurvey writtenSurvey) {
+		this.writtenSurvey = writtenSurvey;
+	}
 }

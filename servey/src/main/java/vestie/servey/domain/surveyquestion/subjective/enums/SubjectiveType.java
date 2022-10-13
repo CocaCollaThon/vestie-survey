@@ -1,4 +1,4 @@
-package vestie.servey.domain.surveyfield.subjective.enums;
+package vestie.servey.domain.surveyquestion.subjective.enums;
 
 /**
  * Created by ShinD on 2022/10/11.

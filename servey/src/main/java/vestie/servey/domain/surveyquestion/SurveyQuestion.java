@@ -1,4 +1,4 @@
-package vestie.servey.domain.surveyfield;
+package vestie.servey.domain.surveyquestion;
 
 /**
  * Created by ShinD on 2022/10/11.
@@ -25,8 +25,8 @@ import vestie.servey.domain.survey.entity.Survey;
 @NoArgsConstructor(access = PROTECTED)
 @Inheritance(strategy = JOINED)
 @DiscriminatorColumn(name = "question_type") // 기본값이 DTYPE
-@Table(name = "survey_field")
-public abstract class SurveyField extends BaseEntity {
+@Table(name = "survey_question")
+public abstract class SurveyQuestion extends BaseEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "survey_id")
@@ -36,7 +36,7 @@ public abstract class SurveyField extends BaseEntity {
 
 
 	//== 생성자 ==//
-	public SurveyField(String title) {
+	public SurveyQuestion(String title) {
 		this.title = title;
 	}
 

@@ -1,4 +1,4 @@
-package vestie.servey.domain.surveyfield.choice;
+package vestie.servey.domain.surveyquestion.choice;
 
 /**
  * Created by ShinD on 2022/10/11.

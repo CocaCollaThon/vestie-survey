@@ -1,4 +1,4 @@
-package vestie.servey.domain.surveyfield.choice;
+package vestie.servey.domain.surveyquestion.choice;
 
 /**
  * Created by ShinD on 2022/10/11.
@@ -16,13 +16,13 @@ import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import vestie.servey.domain.surveyfield.SurveyField;
+import vestie.servey.domain.surveyquestion.SurveyQuestion;
 
 @Getter
 @Entity
 @NoArgsConstructor(access = PROTECTED)
 @DiscriminatorValue("choice_question")
-public class ChoiceQuestion extends SurveyField {
+public class ChoiceQuestion extends SurveyQuestion {
 
 	private boolean isMultiSelectable = false; // 다중 선택 가능 여부
 
