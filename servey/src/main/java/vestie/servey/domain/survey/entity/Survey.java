@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 import vestie.servey.domain.base.BaseEntity;
 import vestie.servey.domain.survey.entity.value.Constraint;
 import vestie.servey.domain.survey.entity.value.ExpectedTime;
-import vestie.servey.domain.surveyfield.SurveyField;
+import vestie.servey.domain.surveyquestion.SurveyQuestion;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -50,7 +50,7 @@ public class Survey extends BaseEntity {
 
 	/* TODO 나중에 deleteInBatch 쓰려면 orphanRemoval 안 쓸거 같아서, 그때 보고 수정 */
 	@OneToMany(mappedBy = "survey", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<SurveyField> surveyFields = new ArrayList<>(); // 필드 질문 항목 들
+	private List<SurveyQuestion> surveyQuestions = new ArrayList<>(); // 필드 질문 항목들
 
 	@Builder
 	public Survey(Long memberId, String title, LocalDate startDate, LocalDate endDate, ExpectedTime expectedTime,
@@ -63,10 +63,10 @@ public class Survey extends BaseEntity {
 		this.constraint = constraint;
 	}
 
-	public void addAllSurveyField(List<SurveyField> surveyFields) {
-		for (SurveyField surveyField : surveyFields) {
-			surveyField.confirmSurvey(this);
-			this.surveyFields.add(surveyField);
+	public void addAllSurveyField(List<SurveyQuestion> surveyQuestions) {
+		for (SurveyQuestion surveyQuestion : surveyQuestions) {
+			surveyQuestion.confirmSurvey(this);
+			this.surveyQuestions.add(surveyQuestion);
 		}
 	}
 }
