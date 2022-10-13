@@ -5,10 +5,10 @@ import static vestie.servey.domain.survey.entity.enums.GenderConstraint.*;
 
 import java.time.LocalDate;
 
-import vestie.servey.domain.survey.entity.value.Constraint;
-import vestie.servey.domain.survey.entity.value.ExpectedTime;
 import vestie.servey.domain.survey.entity.Survey;
 import vestie.servey.domain.survey.entity.enums.GenderConstraint;
+import vestie.servey.domain.survey.entity.value.Constraint;
+import vestie.servey.domain.survey.entity.value.ExpectedTime;
 
 /**
  * Created by ShinD on 2022/10/11.
@@ -29,8 +29,9 @@ public class SurveyFixture {
 		.minAgeConstraint(MIN_AGE_CONSTRAINT)
 		.build(); // 성별, 나이 제약조건
 
-	public static Survey survey() {
 
+
+	public static Survey survey() {
 		return Survey.builder()
 			.memberId(MEMBER_ID)
 			.title(TITLE)
