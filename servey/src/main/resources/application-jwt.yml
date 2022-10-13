@@ -1,0 +1,3 @@
+jwt:
+  secret: 'hello-cocacollathon-vestie-secret-key'
+  expiration-time: 60000*30 # 30분
