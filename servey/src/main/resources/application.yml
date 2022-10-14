@@ -28,3 +28,6 @@ spring:
 
     hibernate:
       ddl-auto: create
+
+  profiles:
+    active: local, jwt
