@@ -6,6 +6,8 @@ import java.util.List;
 
 import vestie.survey.domain.answer.choice.ChoiceQuestionAnswer;
 import vestie.survey.domain.answer.subjective.SubjectiveQuestionAnswer;
+import vestie.survey.domain.writtensurvey.controller.request.ChoiceQuestionAnswerRequest;
+import vestie.survey.domain.writtensurvey.controller.request.SubjectiveQuestionAnswerRequest;
 import vestie.survey.domain.writtensurvey.service.dto.ChoiceQuestionAnswerDto;
 import vestie.survey.domain.writtensurvey.service.dto.SubjectiveQuestionAnswerDto;
 
@@ -45,5 +47,13 @@ public class AnswerFixture {
 
 	public static SubjectiveQuestionAnswerDto subjectiveQuestionAnswerDto() {
 		return new SubjectiveQuestionAnswerDto(SURVEY_QUESTION_ID, ANSWER);
+	}
+
+	public static ChoiceQuestionAnswerRequest choiceQuestionAnswerRequest(Long ... ids) {
+		return new ChoiceQuestionAnswerRequest(SURVEY_QUESTION_ID, List.of(ids));
+	}
+
+	public static SubjectiveQuestionAnswerRequest subjectiveQuestionAnswerRequest() {
+		return new SubjectiveQuestionAnswerRequest(SURVEY_QUESTION_ID, ANSWER);
 	}
 }
