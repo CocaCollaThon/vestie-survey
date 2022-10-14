@@ -6,7 +6,9 @@ import static vestie.survey.fixture.WrittenSurveyFixture.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ import vestie.survey.domain.answer.Answer;
 import vestie.survey.domain.answer.choice.ChoiceQuestionAnswer;
 import vestie.survey.domain.answer.choice.SelectedChoiceOption;
 import vestie.survey.domain.writtensurvey.entity.WrittenSurvey;
+import vestie.survey.domain.writtensurvey.service.dto.WrittenSurveyDto;
+import vestie.survey.fixture.WrittenSurveyFixture;
 
 /**
  * Created by ShinD on 2022/10/14.
@@ -70,5 +74,27 @@ class WrittenSurveyRepositoryTest {
 				}
 			}
 		}
+	}
+
+	@Test
+	@DisplayName("findBySurveyIdAndMemberId() 테스트")
+	public void testFindBySurveyIdAndMemberId() throws Exception {
+	    //given
+		WrittenSurvey writtenSurvey = noIdWrittenSurvey();
+		Long surveyId = writtenSurvey.getSurveyId();
+		Long memberId = writtenSurvey.getMemberId();
+		WrittenSurvey save = writtenSurveyRepository.save(writtenSurvey);
+
+
+		//when
+		WrittenSurvey find = writtenSurveyRepository
+			.findBySurveyIdAndMemberId(surveyId, memberId).get();
+
+		//then
+		assertThat(find).isEqualTo(save);
+
+		// 다르게 조회할 경우 존재 X
+		assertThat(writtenSurveyRepository.findBySurveyIdAndMemberId(surveyId+1L, memberId).isEmpty()).isTrue();
+		assertThat(writtenSurveyRepository.findBySurveyIdAndMemberId(surveyId, memberId+1L).isEmpty()).isTrue();
 	}
 }
