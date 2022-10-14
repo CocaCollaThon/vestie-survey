@@ -3,6 +3,7 @@ package vestie.survey.domain.writtensurvey.service.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Builder;
 import vestie.survey.domain.answer.Answer;
 import vestie.survey.domain.writtensurvey.entity.WrittenSurvey;
 import vestie.survey.domain.writtensurvey.entity.enums.Gender;
@@ -10,11 +11,11 @@ import vestie.survey.domain.writtensurvey.entity.enums.Gender;
 /**
  * Created by ShinD on 2022/10/13.
  */
+@Builder
 public record WrittenSurveyDto(
 	Long memberId, // 작성자 회원 Id
 	int writerAge, // 작성자 나이
 	Gender writerGender, // 작성자 성별
-
 	Long surveyId, // 대상 설문지 양식 Id
 	List<ChoiceQuestionAnswerDto> choiceQuestionAnswerDtos, // 답변한 선택 질문
 	List<SubjectiveQuestionAnswerDto> subjectiveQuestionAnswerDtos // 답변한 주관식 질문
