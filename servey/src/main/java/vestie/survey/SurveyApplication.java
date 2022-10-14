@@ -1,13 +1,13 @@
-package vestie.servey;
+package vestie.survey;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ServeyApplication {
+public class SurveyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ServeyApplication.class, args);
+		SpringApplication.run(SurveyApplication.class, args);
 	}
 
 }

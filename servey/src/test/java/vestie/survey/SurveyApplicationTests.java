@@ -1,10 +1,10 @@
-package vestie.servey;
+package vestie.survey;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ServeyApplicationTests {
+class SurveyApplicationTests {
 
 	@Test
 	void contextLoads() {
