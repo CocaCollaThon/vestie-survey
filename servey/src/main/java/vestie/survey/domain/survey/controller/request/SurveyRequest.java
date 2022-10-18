@@ -3,6 +3,7 @@ package vestie.survey.domain.survey.controller.request;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.apache.tomcat.util.bcel.Const;
+import org.springframework.format.annotation.DateTimeFormat;
 import vestie.survey.domain.survey.entity.enums.GenderConstraint;
 import vestie.survey.domain.survey.entity.value.Constraint;
 import vestie.survey.domain.survey.entity.value.ExpectedTime;
@@ -18,13 +19,13 @@ import java.util.List;
 @Builder
 public class SurveyRequest {
 
-    private Long memberId; // 등록자 id
-
     private String title; // 설문 제목
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private LocalDate startDate; // 설문 시작일
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private LocalDate endDate; // 설문 종료일
 
@@ -40,7 +41,7 @@ public class SurveyRequest {
 
     List<SubjectiveQuestionRequest> subjectiveQuestions; // 주관식 질문 목록
 
-    public SurveyDto toDto(){
+    public SurveyDto toDto(Long memberId){
 
         // 제약 조건 생성
         var constraint = Constraint.builder()

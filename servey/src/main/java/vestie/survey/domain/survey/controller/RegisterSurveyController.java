@@ -13,6 +13,10 @@ import vestie.survey.domain.survey.repository.SurveyRepository;
 import vestie.survey.domain.survey.service.SurveyService;
 import vestie.survey.global.web.argumentresolver.auth.Auth;
 
+import java.net.URI;
+
+import static org.springframework.web.util.UriComponentsBuilder.fromPath;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
@@ -21,12 +25,15 @@ public class RegisterSurveyController {
     private final SurveyService surveyService;
 
     @PostMapping("/v1/survey")
-    public ResponseEntity<Long> registerSurvey(@Auth AuthMember authMember, @RequestBody SurveyRequest surveyRequest){
-        System.out.println(surveyRequest.getExpectedTime());
-        System.out.println(surveyRequest.getGenderConstraint());
-        System.out.println(surveyRequest.getTitle());
-        System.out.println(surveyRequest.getStartDate().toString() + surveyRequest.getEndDate().toString());
-        var savedId = surveyService.save(surveyRequest.toDto());
-        return ResponseEntity.ok(savedId);
+    public ResponseEntity<Void> registerSurvey(@Auth AuthMember authMember, @RequestBody SurveyRequest surveyRequest){
+
+        var savedId = surveyService.save(surveyRequest.toDto(authMember.getId()));
+
+        // 저장된 주소 반환
+        URI uri = fromPath("/v1/survey/{surveyId}")
+                .buildAndExpand(savedId)
+                .toUri();
+
+        return ResponseEntity.created(uri).build();
     }
 }

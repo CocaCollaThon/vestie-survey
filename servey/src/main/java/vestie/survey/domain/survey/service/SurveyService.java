@@ -23,7 +23,6 @@ public class SurveyService {
 
         // 필드 잘 채워졌는지 검증
         validateAllFieldIsSetting(survey);
-
         return transaction.execute(status ->
                 surveyRepository.save(survey).getId());
     }

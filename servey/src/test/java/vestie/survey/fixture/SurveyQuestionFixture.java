@@ -2,6 +2,9 @@ package vestie.survey.fixture;
 
 import static vestie.survey.domain.surveyquestion.subjective.enums.SubjectiveType.*;
 
+import vestie.survey.domain.survey.controller.request.ChoiceOptionRequest;
+import vestie.survey.domain.survey.controller.request.ChoiceQuestionRequest;
+import vestie.survey.domain.survey.controller.request.SubjectiveQuestionRequest;
 import vestie.survey.domain.surveyquestion.SurveyQuestion;
 import vestie.survey.domain.surveyquestion.choice.dto.ChoiceOptionDto;
 import vestie.survey.domain.surveyquestion.choice.dto.ChoiceQuestionDto;
@@ -43,4 +46,16 @@ public class SurveyQuestionFixture {
 				.subjectiveType(SUBJECTIVE_TYPE)
 				.build();
 	}
+
+	public static ChoiceQuestionRequest choiceQuestionRequest(Long ... ids) {
+		List<ChoiceOptionRequest> choiceOptionRequests = new ArrayList<>();
+		choiceOptionRequests.addAll(List.of(ids).stream().map((i)-> new ChoiceOptionRequest(i.toString())).toList());
+
+		return new ChoiceQuestionRequest(TITLE, IS_MULTI_SELECTABLE,choiceOptionRequests);
+	}
+
+	public static SubjectiveQuestionRequest subjectiveQuestionRequest() {
+		return new SubjectiveQuestionRequest(TITLE, SUBJECTIVE_TYPE.toString());
+	}
+
 }

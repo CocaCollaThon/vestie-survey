@@ -4,19 +4,20 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import vestie.survey.domain.surveyquestion.choice.ChoiceQuestion;
 
 import java.util.List;
 
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class ChoiceQuestionDto {
 
     private String title;
 
-    private boolean isMultiSelectable = false;
+    @Value("false")
+    private boolean isMultiSelectable;
 
     private List<ChoiceOptionDto> choiceOptions;
 
