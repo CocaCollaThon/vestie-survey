@@ -31,3 +31,16 @@ spring:
 
   profiles:
     active: local, jwt
+
+  kafka:
+#    consumer:
+#      bootstrap-servers: ec2-3-34-190-54.ap-northeast-2.compute.amazonaws.com:9092
+#      group-id: foo
+#      auto-offset-reset: earliest
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      bootstrap-servers: ec2-3-34-190-54.ap-northeast-2.compute.amazonaws.com:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
