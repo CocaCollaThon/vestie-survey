@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import vestie.survey.domain.surveyquestion.choice.ChoiceQuestion;
 import vestie.survey.domain.surveyquestion.choice.dto.ChoiceQuestionDto;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
@@ -14,10 +17,12 @@ import java.util.List;
 @AllArgsConstructor
 public class ChoiceQuestionRequest {
 
+    @NotBlank
     private String title;
 
     private boolean isMultiSelectable = false;
 
+    @Valid
     private List<ChoiceOptionRequest> choiceOptions;
 
     public ChoiceQuestionDto toDto(){

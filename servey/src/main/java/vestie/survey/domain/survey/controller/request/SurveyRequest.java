@@ -9,6 +9,9 @@ import vestie.survey.domain.survey.entity.value.Constraint;
 import vestie.survey.domain.survey.entity.value.ExpectedTime;
 import vestie.survey.domain.survey.service.dto.SurveyDto;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 import java.util.List;
@@ -19,6 +22,7 @@ import java.util.List;
 @Builder
 public class SurveyRequest {
 
+    @NotBlank
     private String title; // 설문 제목
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -29,16 +33,22 @@ public class SurveyRequest {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private LocalDate endDate; // 설문 종료일
 
+    @NotNull
     private int expectedTime; // 예상 소요시간
 
+    @NotBlank
     private String genderConstraint; // 성별 제약조건
 
+    @NotNull
     private int minAgeConstraint; // 최소 나이 제약조건
 
+    @NotNull
     private int maxAgeConstraint; // 최대 나이 제약조건
 
+    @Valid
     List<ChoiceQuestionRequest> choiceQuestions; // 객관식 질문 목록
 
+    @Valid
     List<SubjectiveQuestionRequest> subjectiveQuestions; // 주관식 질문 목록
 
     public SurveyDto toDto(Long memberId){
