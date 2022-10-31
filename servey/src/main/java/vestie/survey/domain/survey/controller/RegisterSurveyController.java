@@ -27,11 +27,11 @@ public class RegisterSurveyController {
     @PostMapping("/v1/survey")
     public ResponseEntity<Void> registerSurvey(@Auth AuthMember authMember, @RequestBody SurveyRequest surveyRequest){
 
-        var savedId = surveyService.save(surveyRequest.toDto(authMember.getId()));
+        var surveyId = surveyService.save(surveyRequest.toDto(authMember.getId()));
 
         // 저장된 주소 반환
         URI uri = fromPath("/v1/survey/{surveyId}")
-                .buildAndExpand(savedId)
+                .buildAndExpand(surveyId)
                 .toUri();
 
         return ResponseEntity.created(uri).build();
