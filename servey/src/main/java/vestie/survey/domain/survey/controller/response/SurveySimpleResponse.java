@@ -5,6 +5,38 @@ import vestie.survey.domain.survey.entity.value.Constraint;
 
 import java.time.LocalDate;
 
+/**
+ * [
+ *   {
+ *      "id":1,
+ *      "memberId":1,
+ *      "title":"sample title",
+ *      "startDate":[2000,10,20],
+ *      "endDate":[2000,11,4],
+ *      "expectedTime":50,
+ *      "questionNumber":0,
+ *      "constraint": {
+ *             "genderConstraint":"NO_CONSTRAINT",
+ *             "minAgeConstraint":0,
+ *             "maxAgeConstraint":500
+ *             },
+ *      "point":10
+ *   },
+ *   {
+ *      "id":2,
+ *      "memberId":1,
+ *      "title":"sample title",
+ *      "startDate":[2000,10,20],
+ *      "endDate":[2000,11,4],
+ *      "expectedTime":50,
+ *      "questionNumber":0,
+ *      "constraint": {
+ *             "genderConstraint":"NO_CONSTRAINT",
+ *             "minAgeConstraint":0,"maxAgeConstraint":500
+ *             },
+ *      "point":10
+ *   }
+ */
 public record SurveySimpleResponse(
 
         /* 설문 ID */
