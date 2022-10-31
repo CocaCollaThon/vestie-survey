@@ -38,4 +38,10 @@ public class ChoiceOption extends BaseEntity {
 	public void confirmChoiceQuestion(ChoiceQuestion choiceQuestion) {
 		this.choiceQuestion = choiceQuestion;
 	}
+
+	@Override
+	public void checkFieldNotNull() {
+		checkNotNull(this.name, "객관식 옵션의 이름이 정해지지 않았습니다.");
+		checkNotNull(this.choiceQuestion, "객관식 옵션이 속한 질문이 정해지지 않았습니다.");
+	}
 }

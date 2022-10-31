@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import vestie.survey.domain.answer.choice.SelectedChoiceOption;
 import vestie.survey.domain.surveyquestion.SurveyQuestion;
 import vestie.survey.domain.surveyquestion.subjective.enums.SubjectiveType;
 
@@ -30,5 +31,11 @@ public class SubjectiveQuestion extends SurveyQuestion {
 	public SubjectiveQuestion(String title, SubjectiveType subjectiveType) {
 		super(title);
 		this.subjectiveType = subjectiveType;
+	}
+
+	@Override
+	public void checkFieldNotNull() {
+		super.checkFieldNotNull();
+		checkNotNull(this.subjectiveType, "주관식 질문의 유형이 세팅되지 않았습니다.");
 	}
 }

@@ -19,6 +19,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import vestie.survey.domain.answer.Answer;
 import vestie.survey.domain.base.BaseEntity;
 import vestie.survey.domain.survey.entity.value.Constraint;
 import vestie.survey.domain.survey.entity.value.ExpectedTime;
@@ -67,6 +68,19 @@ public class Survey extends BaseEntity {
 		for (SurveyQuestion surveyQuestion : surveyQuestions) {
 			surveyQuestion.confirmSurvey(this);
 			this.surveyQuestions.add(surveyQuestion);
+		}
+	}
+
+	@Override
+	public void checkFieldNotNull() {
+		checkNotNull(memberId, "회원 ID가 세팅되지 않았습니다.");
+		checkNotNull(title, "회원 ID가 세팅되지 않았습니다.");
+		checkNotNull(startDate, "회원 ID가 세팅되지 않았습니다.");
+		checkNotNull(endDate, "회원 ID가 세팅되지 않았습니다.");
+		checkNotNull(expectedTime, "회원 ID가 세팅되지 않았습니다.");
+
+		for (SurveyQuestion question : surveyQuestions) {
+			question.checkFieldNotNull();
 		}
 	}
 }
