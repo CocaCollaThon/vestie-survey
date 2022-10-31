@@ -32,8 +32,8 @@ public record WrittenSurveyRequest(
 
 	@Valid
 	List<SubjectiveQuestionAnswerRequest> subjectiveQuestionAnswerRequests// 답변한 주관식 질문
-
 ) {
+
 	public WrittenSurveyDto toServiceDto(Long memberId) {
 
 		if (choiceQuestionAnswerRequests.isEmpty() && subjectiveQuestionAnswerRequests.isEmpty()) {

@@ -21,9 +21,13 @@ import vestie.survey.domain.writtensurvey.service.dto.WrittenSurveyDto;
 public class WrittenSurveyFixture {
 
 	private final static Long ID = 1L;
+
 	private final static Long SURVEY_ID = 2L; // 대상 설문 양식 ID
+
 	private final static Long MEMBER_ID = 10L; // 작성자 아이디
+
 	private final static int WRITER_AGE = 20; // 작성자 나이
+
 	private final static Gender WRITER_GENDER = Gender.MAN; // 작성자 성별 [MAN, WOMAN]
 
 	public static WrittenSurvey emptyWrittenSurvey() {
@@ -39,7 +43,6 @@ public class WrittenSurveyFixture {
 			.build();
 	}
 
-
 	public static WrittenSurvey writtenSurveyWithId(Long id) {
 		WrittenSurvey writtenSurvey = WrittenSurvey.builder()
 			.surveyId(SURVEY_ID)
@@ -49,7 +52,6 @@ public class WrittenSurveyFixture {
 			.build();
 
 		setField(writtenSurvey, "id", id);
-
 		return writtenSurvey;
 	}
 

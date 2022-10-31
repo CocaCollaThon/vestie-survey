@@ -37,10 +37,18 @@ public class ChoiceQuestion extends SurveyQuestion {
 
 	//== 연관관계 설정 메서드 ==//
 	public void addAllChoiceOption(List<ChoiceOption> choiceOptions) {
-
 		for (ChoiceOption choiceOption : choiceOptions) {
 			choiceOption.confirmChoiceQuestion(this);
 			this.choiceOptions.add(choiceOption);
+		}
+	}
+
+	@Override
+	public void checkFieldNotNull() {
+		super.checkFieldNotNull();
+
+		for (ChoiceOption choiceOption : choiceOptions) {
+			choiceOption.checkFieldNotNull();
 		}
 	}
 }

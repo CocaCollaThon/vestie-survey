@@ -15,6 +15,7 @@ public record SubjectiveQuestionAnswerRequest(
 	@NotBlank
 	String answer // 작성된 답변
 ) {
+
 	public SubjectiveQuestionAnswerDto toServiceDto() {
 		return new SubjectiveQuestionAnswerDto(surveyQuestionId, answer);
 	}

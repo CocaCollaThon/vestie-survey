@@ -28,6 +28,7 @@ class WrittenSurveyServiceTest {
 
 	@Mock
 	private WrittenSurveyRepository writtenSurveyRepository = mock(WrittenSurveyRepository.class);
+
 	@Mock
 	private TransactionTemplate transactionTemplate = mock(TransactionTemplate.class);
 
@@ -41,7 +42,6 @@ class WrittenSurveyServiceTest {
 	@Test
 	@DisplayName("설문 답변 작성에 성공하는 일반적인 케이스")
 	public void successSaveTest() throws Exception {
-
 		//given
 		Long returnId = 10L;
 		WrittenSurveyDto dto = writtenSurveyDto();
@@ -56,7 +56,6 @@ class WrittenSurveyServiceTest {
 		when(transactionTemplate.execute(any()))
 			.thenAnswer(mockTransactionAnswer);
 
-
 		//when
 		Long aLong = writtenSurveyService.save(dto);
 
@@ -69,7 +68,6 @@ class WrittenSurveyServiceTest {
 	@Test
 	@DisplayName("설문에 대해 중복 응답한 경우 예외 발생")
 	public void saveFailedWhenDuplicatedParticipant() throws Exception {
-
 		//given
 		Long returnId = 10L;
 		WrittenSurveyDto dto = writtenSurveyDto();
@@ -91,7 +89,6 @@ class WrittenSurveyServiceTest {
 	@Test
 	@DisplayName("설문 답변 저장 시 트랜잭션이 실행되는지 확인")
 	public void testTransactionIsExecuted() throws Exception {
-
 		//given
 		WrittenSurveyDto dto = writtenSurveyDto();
 
@@ -105,7 +102,6 @@ class WrittenSurveyServiceTest {
 	@Test
 	@DisplayName("엔티티 필드 검증 메서드 실행되는지 확인")
 	public void checkFieldIsNotNullWhenSaveCalled() throws Exception {
-
 		//given
 		WrittenSurveyDto dto =
 			new WrittenSurveyDto(null, 0, null, null, null, null);

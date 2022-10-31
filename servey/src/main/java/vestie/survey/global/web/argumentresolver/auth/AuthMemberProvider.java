@@ -15,7 +15,6 @@ public class AuthMemberProvider {
     private final JwtProperties jwtProperties;
 
     public AuthMember getAuthMember(AuthToken authToken){
-
         Claims body = Jwts.parser().setSigningKey(jwtProperties.secretKey).parseClaimsJws(authToken.getToken()).getBody();
         return AuthMember.builder()
                 .id(body.get("id", Long.class))

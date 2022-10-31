@@ -28,13 +28,11 @@ public class WrittenSurveyController {
 
 	private final WrittenSurveyService writtenSurveyService;
 
-
 	@PostMapping("/v1/written-survey")
 	public ResponseEntity<Void> respondSurvey(
 		@Auth AuthMember authMember,
 		@Valid @RequestBody WrittenSurveyRequest request
 	) {
-
 		// 설문에 대한 응답 저장
 		Long writtenSurveyId =
 			writtenSurveyService.save(request.toServiceDto(authMember.getId()));

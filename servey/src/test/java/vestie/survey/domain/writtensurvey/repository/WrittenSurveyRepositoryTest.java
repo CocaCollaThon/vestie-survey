@@ -34,8 +34,6 @@ class WrittenSurveyRepositoryTest {
 	@DisplayName("설문 답변 작성 시, 답변 필드들까지 한번에 저장 + 객관식 답변의 경우 선택한 옵션들도 모두 저장")
 	public void successSavedWrittenSurveyAndAnswers() throws Exception {
 		//given
-
-		// 설문 생성
 		WrittenSurvey writtenSurvey = noIdWrittenSurvey();
 
 		// 답변 생성
@@ -47,9 +45,7 @@ class WrittenSurveyRepositoryTest {
 		int choiceAnswerCount = 10;
 		for (int i = 0; i < choiceAnswerCount; i++) {
 			ChoiceQuestionAnswer choiceQuestionAnswer = noIdChoiceQuestionAnswer();
-
 			choiceQuestionAnswer.confirmSelectedChoiceOptions(List.of(1L, 2L, 3L));
-
 			answers.add(choiceQuestionAnswer);
 		}
 
@@ -84,7 +80,6 @@ class WrittenSurveyRepositoryTest {
 		Long surveyId = writtenSurvey.getSurveyId();
 		Long memberId = writtenSurvey.getMemberId();
 		WrittenSurvey save = writtenSurveyRepository.save(writtenSurvey);
-
 
 		//when
 		WrittenSurvey find = writtenSurveyRepository

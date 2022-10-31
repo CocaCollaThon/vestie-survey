@@ -1,7 +1,6 @@
 package vestie.survey.fixture;
 
 import org.springframework.test.util.ReflectionTestUtils;
-
 import vestie.survey.domain.answer.choice.SelectedChoiceOption;
 
 /**
@@ -10,6 +9,7 @@ import vestie.survey.domain.answer.choice.SelectedChoiceOption;
 public class SelectedChoiceOptionFixture {
 
 	private final static Long ID = 1L; // 선택한 옵션 양식 ID
+
 	private final static Long CHOICE_OPTION_ID = 1L; // 선택한 옵션 양식 ID
 
 	public static SelectedChoiceOption noIdSelectedChoiceOption() {

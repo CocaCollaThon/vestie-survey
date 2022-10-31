@@ -20,17 +20,11 @@ public class SubjectiveQuestionAnswer extends Answer {
 
 	private String answer; // 답변 내용
 
-
-
-
 	//== 생성자 ==//
 	public SubjectiveQuestionAnswer(Long surveyQuestionId, String answer) {
 		super(surveyQuestionId);
 		this.answer = answer;
 	}
-
-
-
 
 	@Override
 	public void checkFieldNotNull() {

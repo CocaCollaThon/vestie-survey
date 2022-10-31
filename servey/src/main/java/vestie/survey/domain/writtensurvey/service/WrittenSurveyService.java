@@ -17,6 +17,7 @@ import vestie.survey.domain.writtensurvey.service.dto.WrittenSurveyDto;
 public class WrittenSurveyService {
 
 	private final WrittenSurveyRepository writtenSurveyRepository;
+
 	private final TransactionTemplate transaction;
 
 	/**

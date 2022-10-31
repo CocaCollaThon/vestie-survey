@@ -30,5 +30,4 @@ spring:
       ddl-auto: create
 
   profiles:
-    active: local, jwt, kafka
-
+    active: local, jwt

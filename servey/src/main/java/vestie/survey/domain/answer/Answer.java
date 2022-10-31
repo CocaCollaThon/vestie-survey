@@ -31,19 +31,14 @@ public abstract class Answer extends BaseEntity {
 	@Column(nullable = false)
 	protected Long surveyQuestionId; // 대상 질문 양식 Id
 
-
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "written_survey_id")
 	protected WrittenSurvey writtenSurvey; // 작성된 설문지
-
-
-
 
 	//== 생성자 ==//
 	public Answer(Long surveyQuestionId) {
 		this.surveyQuestionId = surveyQuestionId;
 	}
-
 
 	//== 연관관계 편의 메서드 ==//
 	public void confirmWrittenSurvey(WrittenSurvey writtenSurvey) {

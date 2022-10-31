@@ -1,7 +1,6 @@
 package vestie.survey.domain.survey.service;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -12,18 +11,12 @@ import org.springframework.transaction.support.TransactionTemplate;
 import vestie.survey.domain.survey.entity.Survey;
 import vestie.survey.domain.survey.repository.SurveyRepository;
 import vestie.survey.domain.survey.service.dto.SurveyDto;
-import vestie.survey.domain.writtensurvey.service.dto.WrittenSurveyDto;
 import vestie.survey.fixture.SurveyFixture;
 
-import java.lang.reflect.Member;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 import static vestie.survey.fixture.SurveyFixture.surveyDto;
-import static vestie.survey.fixture.WrittenSurveyFixture.writtenSurveyDto;
 
 class SurveyServiceTest {
 
@@ -41,7 +34,6 @@ class SurveyServiceTest {
     @Test
     @DisplayName("설문 등록 성공 테스트")
     void registerTest() {
-
         // given
         Long returnId = 10L;
         SurveyDto surveyDto = surveyDto();
@@ -60,7 +52,6 @@ class SurveyServiceTest {
     @Test
     @DisplayName("설문 등록 저장 시 트랜잭션이 실행되는지 확인")
     public void testTransactionIsExecuted() throws Exception {
-
         //given
         SurveyDto dto = surveyDto();
 
@@ -74,10 +65,11 @@ class SurveyServiceTest {
     @Test
     @DisplayName("엔티티 필드 검증 메서드 실행되는지 확인")
     public void checkFieldIsNotNullWhenSaveCalled() throws Exception {
-
         //given
         SurveyDto dto =
-                new SurveyDto(null, null, null, null, null, null, null, null);
+                new SurveyDto(null, null, null,
+                        null, null, null,
+                        null, null);
 
         //when, then
         assertThrows(RuntimeException.class, () -> surveyService.save(dto));

@@ -34,7 +34,6 @@ public abstract class SurveyQuestion extends BaseEntity {
 
 	private String title; // 질문 내용
 
-
 	//== 생성자 ==//
 	public SurveyQuestion(String title) {
 		this.title = title;
@@ -43,5 +42,11 @@ public abstract class SurveyQuestion extends BaseEntity {
 	//== 연관관계 메서드 ==//
 	public void confirmSurvey(Survey survey) {
 		this.survey = survey;
+	}
+
+	@Override
+	public void checkFieldNotNull() {
+		checkNotNull(this.survey, "질문이 어느 설문에 속하였는지 세팅되지 않았습니다.");
+		checkNotNull(this.title, "질문의 제목이 세팅되지 않았습니다.");
 	}
 }

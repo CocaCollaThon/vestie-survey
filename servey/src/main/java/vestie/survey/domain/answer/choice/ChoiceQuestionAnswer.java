@@ -26,16 +26,10 @@ public class ChoiceQuestionAnswer extends Answer {
 	@OneToMany(mappedBy = "choiceQuestionAnswer", orphanRemoval = true, cascade = ALL)
 	private List<SelectedChoiceOption> selectedChoiceOptions = new ArrayList<>(); // 선택된 옵션들
 
-
-
-
 	//== 생성자 ==//
 	public ChoiceQuestionAnswer(Long surveyQuestionId) {
 		super(surveyQuestionId);
 	}
-
-
-
 
 	// 연관관계 세팅
 	public void confirmSelectedChoiceOptions(List<Long> selectedChoiceOptionIds) {
@@ -47,9 +41,6 @@ public class ChoiceQuestionAnswer extends Answer {
 			this.selectedChoiceOptions.add(selectedChoiceOption);
 		}
 	}
-
-
-
 
 	@Override
 	public void checkFieldNotNull() {

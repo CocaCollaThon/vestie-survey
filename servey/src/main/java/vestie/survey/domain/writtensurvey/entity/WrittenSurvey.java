@@ -30,7 +30,9 @@ public class WrittenSurvey extends BaseEntity {
 
 	@Column(nullable = false)
 	private Long memberId; // 작성자 아이디
+
 	private int writerAge; // 작성자 나이
+
 	private Gender writerGender; // 작성자 성별 [MAN, WOMAN]
 
 	@Column(nullable = false)
@@ -38,12 +40,6 @@ public class WrittenSurvey extends BaseEntity {
 
 	@OneToMany(mappedBy = "writtenSurvey", orphanRemoval = true, cascade = ALL)
 	private List<Answer> answers = new ArrayList<>(); // 작성된 설문 필드들
-
-
-
-
-
-
 
 	//== 생성자 ==//
 	@Builder
@@ -54,10 +50,6 @@ public class WrittenSurvey extends BaseEntity {
 		this.surveyId = surveyId;
 	}
 
-
-
-
-
 	//== 답변에 대한 연관관계 세팅 ==//
 	public void confirmWrittenSurveyQuestions(List<Answer> answers) {
 		this.answers = answers;
@@ -65,11 +57,6 @@ public class WrittenSurvey extends BaseEntity {
 			answer.confirmWrittenSurvey(this);
 		}
 	}
-
-
-
-
-
 
 	@Override
 	public void checkFieldNotNull() {
