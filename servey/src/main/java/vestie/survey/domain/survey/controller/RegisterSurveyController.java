@@ -27,9 +27,8 @@ public class RegisterSurveyController {
     @PostMapping("/v1/survey")
     public ResponseEntity<Void> registerSurvey(@Auth AuthMember authMember, @RequestBody SurveyRequest surveyRequest){
 
-        var surveyId = surveyService.save(surveyRequest.toDto(authMember.getId()));
+        Long surveyId = surveyService.save(surveyRequest.toDto(authMember.getId()));
 
-        // 저장된 주소 반환
         URI uri = fromPath("/v1/survey/{surveyId}")
                 .buildAndExpand(surveyId)
                 .toUri();

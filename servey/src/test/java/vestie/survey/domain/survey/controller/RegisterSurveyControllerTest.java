@@ -50,7 +50,7 @@ class RegisterSurveyControllerTest {
         SurveyRequest surveyRequest = SurveyFixture.surveyRequest();
         Long memberId = 10L;
         Long savedId = 12L;
-        when(surveyService.save(surveyRequest.toDto(memberId))).thenReturn(savedId);
+        when(surveyService.save(any())).thenReturn(savedId);
         when(authMemberArgumentResolver.resolveArgument(any(), any(), any(), any())).thenReturn(new AuthMember(memberId, "sample"));
         when(authMemberArgumentResolver.supportsParameter(any())).thenReturn(true);
 
