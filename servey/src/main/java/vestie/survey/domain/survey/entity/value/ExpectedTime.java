@@ -3,6 +3,7 @@ package vestie.survey.domain.survey.entity.value;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
  */
 @Embeddable
 @NoArgsConstructor
+@Getter
 public class ExpectedTime {
 
 	@Column(name = "expected_time", nullable = false)
