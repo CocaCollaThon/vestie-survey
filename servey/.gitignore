@@ -1,3 +1,7 @@
+### yml ###
+src/main/resources/application-jwt.yml
+src/main/resources/application-kafka.yml
+
 HELP.md
 .gradle
 build/
