@@ -9,8 +9,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import vestie.survey.domain.survey.controller.request.ChoiceQuestionRequest;
 import vestie.survey.domain.survey.controller.request.SubjectiveQuestionRequest;
 import vestie.survey.domain.survey.controller.request.SurveyRequest;

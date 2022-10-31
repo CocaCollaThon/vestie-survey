@@ -2,7 +2,6 @@ package vestie.survey.domain.survey.controller.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
-import org.apache.tomcat.util.bcel.Const;
 import org.springframework.format.annotation.DateTimeFormat;
 import vestie.survey.domain.survey.entity.enums.GenderConstraint;
 import vestie.survey.domain.survey.entity.value.Constraint;
