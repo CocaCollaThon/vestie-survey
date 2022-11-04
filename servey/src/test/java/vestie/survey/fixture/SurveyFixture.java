@@ -8,18 +8,24 @@ import static vestie.survey.fixture.SurveyQuestionFixture.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.boot.test.autoconfigure.json.JsonTest;
+import org.springframework.test.util.ReflectionTestUtils;
 import vestie.survey.domain.survey.controller.request.ChoiceQuestionRequest;
 import vestie.survey.domain.survey.controller.request.SubjectiveQuestionRequest;
 import vestie.survey.domain.survey.controller.request.SurveyRequest;
+import vestie.survey.domain.survey.controller.response.ChoiceQuestionResponse;
+import vestie.survey.domain.survey.controller.response.SubjectiveQuestionResponse;
+import vestie.survey.domain.survey.controller.response.SurveyCompleteInfoResponse;
+import vestie.survey.domain.survey.controller.response.SurveySimpleResponse;
 import vestie.survey.domain.survey.entity.Survey;
 import vestie.survey.domain.survey.entity.enums.GenderConstraint;
 import vestie.survey.domain.survey.entity.value.Constraint;
 import vestie.survey.domain.survey.entity.value.ExpectedTime;
 import vestie.survey.domain.survey.service.dto.SurveyDto;
+import vestie.survey.domain.surveyquestion.choice.ChoiceQuestion;
 import vestie.survey.domain.surveyquestion.choice.dto.ChoiceQuestionDto;
+import vestie.survey.domain.surveyquestion.subjective.SubjectiveQuestion;
 import vestie.survey.domain.surveyquestion.subjective.dto.SubjectiveQuestionDto;
 
 /**
@@ -60,6 +66,12 @@ public class SurveyFixture {
 			.expectedTime(EXPECTED_TIME)
 			.constraint(CONSTRAINT)
 			.build();
+	}
+
+	public static Survey surveyWithId() {
+		Survey survey = survey();
+		ReflectionTestUtils.setField(survey, "id" ,ID);
+		return survey;
 	}
 
 	public static SurveyDto surveyDto(){
@@ -124,5 +136,27 @@ public class SurveyFixture {
 				.choiceQuestions(choiceQuestionRequests)
 				.subjectiveQuestions(subjectiveQuestionRequests)
 				.build();
+	}
+
+	public static List<SurveySimpleResponse> surveySimpleResponse(int size) {
+		return IntStream.range(0, size)
+				.mapToObj(i -> new SurveySimpleResponse(survey()))
+				.toList();
+	}
+
+	public static SurveyCompleteInfoResponse surveyCompleteInfoResponse(Long id) {
+		Survey survey = surveyWithId(id);
+		List<ChoiceQuestionResponse> choiceQResponses = new ArrayList<>();
+		List<SubjectiveQuestionResponse> subjectiveQResponses = new ArrayList<>();
+
+		survey.getSurveyQuestions().forEach(q -> {
+			if (q instanceof SubjectiveQuestion sq) {
+				subjectiveQResponses.add(new SubjectiveQuestionResponse(sq));
+			}
+			if (q instanceof ChoiceQuestion cq) {
+				choiceQResponses.add(new ChoiceQuestionResponse(cq));
+			}
+		});
+		return new SurveyCompleteInfoResponse(survey, choiceQResponses, subjectiveQResponses);
 	}
 }

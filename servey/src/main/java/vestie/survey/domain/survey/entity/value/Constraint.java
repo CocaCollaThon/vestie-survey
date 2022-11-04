@@ -8,8 +8,11 @@ import javax.persistence.Enumerated;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import vestie.survey.domain.survey.entity.enums.GenderConstraint;
+
+import java.util.Objects;
 
 /**
  * Created by ShinD on 2022/10/11.
@@ -17,6 +20,7 @@ import vestie.survey.domain.survey.entity.enums.GenderConstraint;
 @Embeddable
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 @Builder
 public class Constraint {
 
@@ -31,4 +35,18 @@ public class Constraint {
 	@Builder.Default
 	@Column(name = "max_age_constraint")
 	private int maxAgeConstraint = 500; // 최대 나이 제약조건
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Constraint that)) return false;
+		return minAgeConstraint == that.minAgeConstraint
+				&& maxAgeConstraint == that.maxAgeConstraint
+				&& genderConstraint == that.genderConstraint;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(genderConstraint, minAgeConstraint, maxAgeConstraint);
+	}
 }

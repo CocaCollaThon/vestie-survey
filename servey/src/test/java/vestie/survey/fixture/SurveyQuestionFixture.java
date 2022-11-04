@@ -34,10 +34,9 @@ public class SurveyQuestionFixture {
 
 	public static ChoiceQuestionDto choiceQuestionDto(Long ... ids) {
 		List<ChoiceOptionDto> choiceOptionDtos = new ArrayList<>();
-		List.of(ids).stream().map(i ->
+		List.of(ids).forEach(i ->
 			choiceOptionDtos.add(new ChoiceOptionDto(i.toString()))
 		);
-
 		return ChoiceQuestionDto.builder()
 				.isMultiSelectable(IS_MULTI_SELECTABLE)
 				.title(TITLE)
