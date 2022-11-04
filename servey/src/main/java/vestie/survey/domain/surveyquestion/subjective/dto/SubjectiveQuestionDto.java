@@ -18,10 +18,13 @@ public class SubjectiveQuestionDto {
 
     private SubjectiveType subjectiveType;
 
+    private Long questionOrder;
+
     public SubjectiveQuestion toEntity() {
         return SubjectiveQuestion.builder()
                 .title(title)
                 .subjectiveType(subjectiveType)
+                .questionOrder(questionOrder)
                 .build();
     }
 }

@@ -33,10 +33,13 @@ public abstract class SurveyQuestion extends BaseEntity {
 	private Survey survey; // 설문지
 
 	private String title; // 질문 내용
+	
+	private Long questionOrder; // 질문 번호
 
 	//== 생성자 ==//
-	public SurveyQuestion(String title) {
+	public SurveyQuestion(String title, Long questionOrder) {
 		this.title = title;
+		this.questionOrder = questionOrder;
 	}
 
 	//== 연관관계 메서드 ==//
@@ -48,5 +51,6 @@ public abstract class SurveyQuestion extends BaseEntity {
 	public void checkFieldNotNull() {
 		checkNotNull(this.survey, "질문이 어느 설문에 속하였는지 세팅되지 않았습니다.");
 		checkNotNull(this.title, "질문의 제목이 세팅되지 않았습니다.");
+		checkNotNull(this.questionOrder, "질문의 번호가 세팅되지 않았습니다.");
 	}
 }

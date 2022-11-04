@@ -30,8 +30,8 @@ public class ChoiceQuestion extends SurveyQuestion {
 	private List<ChoiceOption> choiceOptions = new ArrayList<>(); // 질문 옵션 리스트
 
 	//== 생성자 ==//
-	public ChoiceQuestion(String title, boolean isMultiSelectable) {
-		super(title);
+	public ChoiceQuestion(String title, Long questionOrder, boolean isMultiSelectable) {
+		super(title, questionOrder);
 		this.isMultiSelectable = isMultiSelectable;
 	}
 

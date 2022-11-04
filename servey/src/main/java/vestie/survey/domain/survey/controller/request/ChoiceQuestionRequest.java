@@ -17,6 +17,9 @@ public class ChoiceQuestionRequest {
     @NotBlank
     private String title;
 
+    @NotNull
+    private Long questionOrder;
+
     private boolean isMultiSelectable = false;
 
     @Valid
@@ -25,6 +28,7 @@ public class ChoiceQuestionRequest {
     public ChoiceQuestionDto toDto(){
         return ChoiceQuestionDto.builder()
                 .title(title)
+                .questionOrder(questionOrder)
                 .isMultiSelectable(isMultiSelectable)
                 .choiceOptions(choiceOptions.stream().map(ChoiceOptionRequest::toDto).toList())
                 .build();

@@ -28,8 +28,8 @@ public class SubjectiveQuestion extends SurveyQuestion {
 	private SubjectiveType subjectiveType; // 주관식 질문 유형, [SHORT_ANSWER, ESSAY]
 
 	@Builder
-	public SubjectiveQuestion(String title, SubjectiveType subjectiveType) {
-		super(title);
+	public SubjectiveQuestion(String title, Long questionOrder, SubjectiveType subjectiveType) {
+		super(title, questionOrder);
 		this.subjectiveType = subjectiveType;
 	}
 

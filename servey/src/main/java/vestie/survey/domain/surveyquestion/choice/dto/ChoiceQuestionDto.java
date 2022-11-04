@@ -16,6 +16,8 @@ public class ChoiceQuestionDto {
 
     private String title;
 
+    private Long questionOrder;
+
     @Value("false")
     private boolean isMultiSelectable;
 
@@ -23,7 +25,7 @@ public class ChoiceQuestionDto {
 
     public ChoiceQuestion toEntity(){
         // 선택형 질문 생성
-        var choiceQuestion = new ChoiceQuestion(title, isMultiSelectable);
+        var choiceQuestion = new ChoiceQuestion(title, questionOrder, isMultiSelectable);
 
         // 질문에 옵션 세팅
         choiceQuestion.addAllChoiceOption(choiceOptions.stream().map(ChoiceOptionDto::toEntity).toList());
