@@ -36,8 +36,9 @@ class SurveyRepositoryTest {
 		Survey survey = survey();
 
 		ArrayList<SurveyQuestion> surveyFields = new ArrayList<>();
-		for (String title : List.of("질문1", "질문2", "질문3")) {
-			surveyFields.add(SurveyQuestionFixture.surveyField(title));
+
+		for (int i =1; i <= 3; i++){
+			surveyFields.add(SurveyQuestionFixture.surveyField("질문"+i, (long) i));
 		}
 		survey.addAllSurveyField(surveyFields);
 
