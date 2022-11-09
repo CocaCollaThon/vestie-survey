@@ -1,4 +1,4 @@
-package vestie.survey.domain.survey.controller.response;
+package vestie.survey.domain.survey.controller.response.surveyQuery;
 
 import vestie.survey.domain.survey.entity.Survey;
 import vestie.survey.domain.survey.entity.value.Constraint;

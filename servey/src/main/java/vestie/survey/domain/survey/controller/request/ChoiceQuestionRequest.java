@@ -7,6 +7,7 @@ import vestie.survey.domain.surveyquestion.choice.dto.ChoiceQuestionDto;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter

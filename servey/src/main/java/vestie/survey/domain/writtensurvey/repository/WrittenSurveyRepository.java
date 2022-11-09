@@ -1,5 +1,6 @@
 package vestie.survey.domain.writtensurvey.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,4 +18,11 @@ public interface WrittenSurveyRepository extends JpaRepository<WrittenSurvey, Lo
 	 * @param memberId 회원 ID
 	 */
 	 Optional<WrittenSurvey> findBySurveyIdAndMemberId(Long surveyId, Long memberId);
+
+	/**
+	 * 설문 Id를 가지고 작성된 모든 설문지 찾아오는 메서드
+	 * @param surveyId
+	 * @return
+	 */
+	 List<WrittenSurvey> findAllBySurveyId(Long surveyId);
 }

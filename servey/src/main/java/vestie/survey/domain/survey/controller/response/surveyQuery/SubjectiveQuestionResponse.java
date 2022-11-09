@@ -1,4 +1,4 @@
-package vestie.survey.domain.survey.controller.response;
+package vestie.survey.domain.survey.controller.response.surveyQuery;
 
 import vestie.survey.domain.surveyquestion.subjective.SubjectiveQuestion;
 import vestie.survey.domain.surveyquestion.subjective.enums.SubjectiveType;
