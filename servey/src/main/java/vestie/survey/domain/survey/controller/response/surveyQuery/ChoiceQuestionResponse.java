@@ -10,6 +10,10 @@ public record ChoiceQuestionResponse(
 
         String title,
 
+        String type,
+
+        Long questionOrder,
+
         /* 다중 선택 가능 여부 */
         boolean isMultiSelectable,
 
@@ -21,6 +25,8 @@ public record ChoiceQuestionResponse(
         this(
                 choiceQuestion.getId(),
                 choiceQuestion.getTitle(),
+                "choice",
+                choiceQuestion.getQuestionOrder(),
                 choiceQuestion.isMultiSelectable(),
                 choiceQuestion.getChoiceOptions().stream().map(ChoiceOptionResponse::new).toList()
         );
