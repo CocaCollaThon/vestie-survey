@@ -5,9 +5,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vestie.survey.domain.auth.AuthMember;
 import vestie.survey.domain.survey.controller.request.SurveyRequest;
-import vestie.survey.domain.survey.controller.response.SurveyCompleteInfoResponse;
-import vestie.survey.domain.survey.controller.response.SurveySimpleResponse;
+import vestie.survey.domain.survey.controller.response.surveyQuery.SurveyCompleteInfoResponse;
+import vestie.survey.domain.survey.controller.response.surveyQuery.SurveySimpleResponse;
 import vestie.survey.domain.survey.service.SurveyQueryService;
+import vestie.survey.domain.survey.controller.response.surveyResult.SurveyResultResponse;
+import vestie.survey.domain.survey.service.SurveyResultService;
 import vestie.survey.domain.survey.service.SurveyService;
 import vestie.survey.global.web.argumentresolver.auth.Auth;
 
@@ -23,6 +25,7 @@ public class SurveyController {
 
     private final SurveyService surveyService;
     private final SurveyQueryService surveyQueryService;
+    private final SurveyResultService surveyResultService;
 
     @PostMapping
     public ResponseEntity<Void> registerSurvey(@Auth AuthMember authMember, @RequestBody SurveyRequest surveyRequest){
@@ -50,5 +53,11 @@ public class SurveyController {
     public ResponseEntity<List<SurveySimpleResponse>> getAllSimpleInfo() {
         List<SurveySimpleResponse> simpleResponses = surveyQueryService.getAllSimpleInfo();
         return ResponseEntity.ok(simpleResponses);
+    }
+
+    @GetMapping("/{surveyId}/result")
+    public ResponseEntity<SurveyResultResponse> getSurveyResultById(@PathVariable Long surveyId){
+        SurveyResultResponse surveyResult = surveyResultService.getResultById(surveyId);
+        return ResponseEntity.ok(surveyResult);
     }
 }
