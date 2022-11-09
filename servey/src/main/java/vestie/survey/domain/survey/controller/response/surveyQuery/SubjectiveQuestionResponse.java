@@ -9,6 +9,10 @@ public record SubjectiveQuestionResponse(
 
         String title,
 
+        String type,
+
+        Long questionOrder,
+
         /* SHORT_ANSWER, ESSAY */
         SubjectiveType subjectiveType
 ) {
@@ -17,6 +21,8 @@ public record SubjectiveQuestionResponse(
         this(
           sq.getId(),
           sq.getTitle(),
+          "subjective",
+          sq.getQuestionOrder(),
           sq.getSubjectiveType()
         );
     }
