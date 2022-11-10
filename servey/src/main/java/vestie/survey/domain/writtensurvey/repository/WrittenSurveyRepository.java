@@ -25,4 +25,10 @@ public interface WrittenSurveyRepository extends JpaRepository<WrittenSurvey, Lo
 	 * @return
 	 */
 	 List<WrittenSurvey> findAllBySurveyId(Long surveyId);
+
+	/**
+	 * 설문 Id를 가지고 작성된 설문지 개수를 반환하는 메서드
+	 * @param id
+	 */
+    Long countBySurveyId(Long id);
 }

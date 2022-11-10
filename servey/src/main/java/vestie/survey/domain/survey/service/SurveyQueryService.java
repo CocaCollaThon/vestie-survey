@@ -3,6 +3,7 @@ package vestie.survey.domain.survey.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import vestie.survey.domain.survey.controller.response.ClosedSurveySimpleResponse;
 import vestie.survey.domain.survey.controller.response.surveyQuery.ChoiceQuestionResponse;
 import vestie.survey.domain.survey.controller.response.surveyQuery.SubjectiveQuestionResponse;
 import vestie.survey.domain.survey.controller.response.surveyQuery.SurveyCompleteInfoResponse;
@@ -13,6 +14,7 @@ import vestie.survey.domain.survey.repository.SurveyRepository;
 import vestie.survey.domain.surveyquestion.choice.ChoiceQuestion;
 import vestie.survey.domain.surveyquestion.subjective.SubjectiveQuestion;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
