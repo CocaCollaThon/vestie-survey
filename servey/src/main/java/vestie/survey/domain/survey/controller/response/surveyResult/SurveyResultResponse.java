@@ -3,6 +3,7 @@ package vestie.survey.domain.survey.controller.response.surveyResult;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import vestie.survey.domain.surveyquestion.exception.NotFoundSurveyQuestionException;
+import vestie.survey.domain.writtensurvey.entity.enums.Gender;
 
 import java.util.Comparator;
 import java.util.List;
@@ -12,10 +13,14 @@ import java.util.List;
 public class SurveyResultResponse {
 
     private int answerCount; // 응답자 수
+    private int womanCount;
+    private int manCount;
     private List<SurveyQuestionResultResponse> surveyQuestionResultResponses;
 
     public SurveyResultResponse(int answerCount, List<SurveyQuestionResultResponse> surveyQuestionResultResponses) {
         this.answerCount = answerCount;
+        this.womanCount = 0;
+        this.manCount = 0;
         this.surveyQuestionResultResponses = surveyQuestionResultResponses;
     }
 
@@ -41,5 +46,13 @@ public class SurveyResultResponse {
             }
         }
         throw new NotFoundSurveyQuestionException();
+    }
+
+    public void genderCountUp(Gender gender) {
+        if(gender == Gender.MAN){
+            this.manCount += 1;
+        }else {
+            this.womanCount += 1;
+        }
     }
 }

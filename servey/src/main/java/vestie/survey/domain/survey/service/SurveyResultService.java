@@ -51,20 +51,22 @@ public class SurveyResultService {
 
         // 결과 집계
         writtenSurveyList.forEach(
-                (writtenSurvey) -> writtenSurvey.getAnswers().forEach(
-                        (answer) -> {
-                            if(answer instanceof ChoiceQuestionAnswer choiceQuestionAnswer){
-                                ChoiceQuestionResultResponse choiceQuestion = surveyResultResponse.findByChoiceQuestionId(choiceQuestionAnswer.getSurveyQuestionId());
-                                choiceQuestionAnswer.getSelectedChoiceOptions().forEach(
-                                        (selectedChoiceOption) -> choiceQuestion.findOptionById(selectedChoiceOption.getChoiceOptionId()).countUp()
-                                );
+                (writtenSurvey) -> {
+                    writtenSurvey.getAnswers().forEach(
+                            (answer) -> {
+                                if (answer instanceof ChoiceQuestionAnswer choiceQuestionAnswer) {
+                                    ChoiceQuestionResultResponse choiceQuestion = surveyResultResponse.findByChoiceQuestionId(choiceQuestionAnswer.getSurveyQuestionId());
+                                    choiceQuestionAnswer.getSelectedChoiceOptions().forEach(
+                                            (selectedChoiceOption) -> choiceQuestion.findOptionById(selectedChoiceOption.getChoiceOptionId()).countUp()
+                                    );
+                                } else if (answer instanceof SubjectiveQuestionAnswer subjectiveQuestionAnswer) {
+                                    SubjectiveQuestionResultResponse subjectiveQuestion = surveyResultResponse.findBySubjectiveQuestionId(subjectiveQuestionAnswer.getSurveyQuestionId());
+                                    subjectiveQuestion.getAnswers().add(subjectiveQuestionAnswer.getAnswer());
+                                }
                             }
-                            else if(answer instanceof SubjectiveQuestionAnswer subjectiveQuestionAnswer){
-                                SubjectiveQuestionResultResponse subjectiveQuestion = surveyResultResponse.findBySubjectiveQuestionId(subjectiveQuestionAnswer.getSurveyQuestionId());
-                                subjectiveQuestion.getAnswers().add(subjectiveQuestionAnswer.getAnswer());
-                            }
-                        }
-                )
+                    );
+                    surveyResultResponse.genderCountUp(writtenSurvey.getWriterGender());
+                }
         );
 
         return surveyResultResponse;
