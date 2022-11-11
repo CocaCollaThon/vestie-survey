@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vestie.survey.domain.auth.AuthMember;
 import vestie.survey.domain.survey.controller.request.SurveyRequest;
+import vestie.survey.domain.survey.controller.response.ClosedSurveySimpleResponse;
 import vestie.survey.domain.survey.controller.response.surveyQuery.SurveyCompleteInfoResponse;
 import vestie.survey.domain.survey.controller.response.surveyQuery.SurveySimpleResponse;
 import vestie.survey.domain.survey.service.SurveyQueryService;
@@ -59,5 +60,11 @@ public class SurveyController {
     public ResponseEntity<SurveyResultResponse> getSurveyResultById(@PathVariable Long surveyId){
         SurveyResultResponse surveyResult = surveyResultService.getResultById(surveyId);
         return ResponseEntity.ok(surveyResult);
+    }
+
+    @GetMapping("/close")
+    public ResponseEntity<List<ClosedSurveySimpleResponse>> getAllClosedSurveyInfo() {
+        List<ClosedSurveySimpleResponse> surveyInfo = surveyResultService.getAllClosedSurveyInfo();
+        return ResponseEntity.ok(surveyInfo);
     }
 }
